@@ -26,6 +26,8 @@ const Auth = ({setShowLoader}) => {
         const data = await response.json()
         if (data.detail) {
             setError(data.detail)
+            setShowLoader(false)
+            return
         } else {
             setCookie('Email', data.email)
             setCookie('AuthToken', data.token)
@@ -41,26 +43,29 @@ const Auth = ({setShowLoader}) => {
     }
     return (
         <div className="auth">
-            <form>
+            <form onSubmit={(e) => handleSubmit(e, isLogin ? 'login' : 'signup')}>
                 <h2>{isLogin ? 'Log In' : 'Sign Up'}</h2>
                 <input
                     type="email"
                     placeholder='Email'
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                 />
 
                 <input
                     type="password"
                     placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
                 {!isLogin &&
                     <input
                         type="password"
                         placeholder="Confirm password"
                         onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
                     />}
-                <input type="submit" value={isLogin ? 'Login' : 'Signup'} className='submit' onClick={(e) => handleSubmit(e, isLogin ? 'login' : 'signup')} />
+                <input type="submit" value={isLogin ? 'Login' : 'Signup'} className='submit' />
                 {error && <p className="error">{error}</p>}
             </form>
             {!isLogin ?
