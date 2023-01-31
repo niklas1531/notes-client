@@ -195,10 +195,20 @@ input {
 /* Note */
 .note {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    gap:unset;
     width: 100%;
     justify-content: space-between;
     border-bottom: 1.5px solid rgb(0,0,0,0.05);
+}
+@media (max-width: 750px) {
+    .note {
+        flex-direction: column;
+        gap: 20px;
+       padding-bottom: 40px;
+       text-align: center;
+    }
 }
 .note .date {
     color: rgb(0,0,0,.6);
