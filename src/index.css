@@ -1,0 +1,206 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: rgb(221, 231, 240);
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+input {
+    border: 1.5px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.submit {
+    border-color: rgb(126, 164, 234);
+    background-color: rgb(203, 221, 254);
+}
+
+.create {
+    background-color: rgb(211, 234, 211);
+    color: rgb(0, 0, 0, 0.8);
+    border: 1.5px solid rgb(157, 224, 157);
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.create:hover {
+    background-color: rgb(157, 224, 157);
+}
+
+.logout {
+    background-color: aliceblue;
+    color: rgb(0, 0, 0, 0.8);
+    border: 1.5px solid rgb(180, 216, 248);
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.logout:hover {
+    background-color: rgb(180, 216, 248);
+    ;
+}
+
+.delete {
+    background-color: rgb(246, 196, 196);
+    color: rgb(0, 0, 0, 0.8);
+    border: 1.5px solid rgb(232, 114, 114);
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+.delete:hover {
+    background-color:  rgb(232, 114, 114);
+}
+.edit {}
+
+/* Auth */
+.auth {
+    width: 500px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: rgb(0, 0, 0, 0.05) 0 6px 24px, rgb(0, 0, 0, 0.08) 0 0 1px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.auth .button-group {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.auth form {
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 30px;
+    text-align: center;
+}
+
+.auth .button-group button {
+    width: 50%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: none;
+    font-weight: bold;
+    letter-spacing: .2rem;
+}
+
+.error {
+    color: rgb(245, 108, 108);
+    font-weight: bold;
+}
+
+/* Home */
+.home {
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: rgb(0, 0, 0, 0.05) 0 6px 24px, rgb(0, 0, 0, 0.08) 0 0 1px;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .heading {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.header .heading p {
+    color: rgb(216, 216, 217);
+}
+
+.header .btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* Modal */
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal .close {
+    border: none;
+    background-color: transparent;
+}
+
+.modal {
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    width: 500px;
+    padding: 20px;
+    height: 300px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Progress */
+.outer-progress {
+    width: 200px;
+    height: 10px;
+    border: 1.5px solid rgb(0, 0, 0,0.6);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.inner-progress {
+    height: 100%;
+}
+
+
+/* Note */
+.note {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1.5px solid rgb(0,0,0,0.05);
+}
+.note .date {
+    color: rgb(0,0,0,.6);
+    font-size: 15px;
+    font-style: italic;
+}
+/* Footer */
+footer {
+    width: 100%;
+    padding-top: 20px;
+    text-align: right;
+    color: rgb(0, 0, 0, 0.5);
+
+}
