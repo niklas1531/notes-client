@@ -2,14 +2,16 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import Modal from "./Modal";
 
-const Header = ({getData}) => {
+const Header = ({getData, setShowLoader}) => {
     const [cookies, setCookie, removeCookie] = useCookies(null)
     const [showModal, changeShowModal] = useState(false)
     const Email = cookies.Email
     const logout = () => {
+        setShowLoader(true)
         removeCookie('Email')
         removeCookie('AuthToken')
         window.location.reload()
+        setShowLoader(false)
     }
     return (
         <div className="header">
@@ -21,7 +23,7 @@ const Header = ({getData}) => {
                 <button className="create" onClick={()=> changeShowModal(true)}>Create Note</button>
                 <button className='logout' onClick={logout}>Logout</button>
             </div>
-            {showModal && <Modal changeShowModal={changeShowModal} mode={'Create'} getData={getData}/>}
+            {showModal && <Modal changeShowModal={changeShowModal} mode={'Create'} getData={getData} setShowLoader={setShowLoader}/>}
         </div>
     );
 }

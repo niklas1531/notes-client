@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
-const Modal = ({ mode, changeShowModal, note, getData }) => {
+const Modal = ({ mode, changeShowModal, note, getData , setShowLoader}) => {
     const [cookies, setCookie, removeCookie] = useCookies(null)
     const [data, setData] = useState({
         user_email: mode === 'Edit' ? note.user_email : cookies.Email,
@@ -21,6 +21,7 @@ const Modal = ({ mode, changeShowModal, note, getData }) => {
 
     const postData = async (e) => {
         e.preventDefault()
+        setShowLoader(true)
         try {
             const response = await fetch(`https://notes-server-production-9f36.up.railway.app/notes`, {
                 method: 'POST',
@@ -31,7 +32,9 @@ const Modal = ({ mode, changeShowModal, note, getData }) => {
             if (response.status === 200) {
                 console.log('Worked')
                 changeShowModal(false)
+                setShowLoader(false)
                 getData()
+
             }
         } catch (error) {
             console.error(error)
@@ -40,6 +43,7 @@ const Modal = ({ mode, changeShowModal, note, getData }) => {
 
     const editData = async (e) => {
         e.preventDefault()
+        setShowLoader(true)
         try {
             const response = await fetch(`https://notes-server-production-9f36.up.railway.app/notes/${note.id}`, {
                 method: 'PUT',
@@ -49,6 +53,7 @@ const Modal = ({ mode, changeShowModal, note, getData }) => {
             if(response.status === 200){
                 changeShowModal(false)
                 console.log('Edited!')
+                setShowLoader(false)
                 getData()
 
             }
@@ -68,7 +73,7 @@ const Modal = ({ mode, changeShowModal, note, getData }) => {
                     <input type="text" placeholder='title' maxLength='300' onChange={handleChange} name='title' value={data.title} />
                     <label htmlFor="range">Drag to select your current progress:</label>
                     <input id='range' type="range" min={'2'} max={'100'} onChange={handleChange} name='progress' value={data.progress} />
-                    <input type="submit" value={mode} onClick={mode=== 'Create' ? postData : editData}/>
+                    <input type="submit" className='submit' value={mode} onClick={mode=== 'Create' ? postData : editData}/>
                 </form>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCookies } from 'react-cookie'
 
-const Auth = () => {
+const Auth = ({setShowLoader}) => {
     const [cookies, setCookie, removeCookie] = useCookies(null)
     const [isLogin, setIsLogin] = useState(true)
     const [error, setError] = useState(null)
@@ -11,6 +11,7 @@ const Auth = () => {
 
     const handleSubmit = async (e, endpoint) => {
         e.preventDefault()
+        setShowLoader(true)
 
         if (!isLogin && password !== confirmPassword) {
             setError('Make sure that passwords match!')
@@ -28,6 +29,7 @@ const Auth = () => {
         } else {
             setCookie('Email', data.email)
             setCookie('AuthToken', data.token)
+            setShowLoader(false)
             window.location.reload()
         }
 
@@ -40,7 +42,7 @@ const Auth = () => {
     return (
         <div className="auth">
             <form>
-                <h2>{isLogin ? 'Log in' : 'Sign up'}</h2>
+                <h2>{isLogin ? 'Log In' : 'Sign Up'}</h2>
                 <input
                     type="email"
                     placeholder='Email'
@@ -62,14 +64,14 @@ const Auth = () => {
                 {error && <p className="error">{error}</p>}
             </form>
             {!isLogin ?
-                    <button
-                        onClick={() => changeView(true)}
-                    >Already have an Account? Login</button>
-                    :
-                    <button
-                        onClick={() => changeView(false)}
-                    >Create Account</button>
-                }
+                <button
+                    onClick={() => changeView(true)}
+                >Already have an Account? Login</button>
+                :
+                <button
+                    onClick={() => changeView(false)}
+                >Create Account</button>
+            }
         </div>
     );
 }

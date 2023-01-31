@@ -10,12 +10,13 @@ function App() {
   const Email = cookies.Email
   const AuthToken = cookies.AuthToken
   const [notes, setNotes] = useState(null)
+  const [showLoader, setShowLoader] = useState(false)
 
   const getData = async () => {
     try {
       const response = await fetch(`https://notes-server-production-9f36.up.railway.app/notes/${Email}`)
       const json = await response.json()
-      const sorted = json?.sort((a, b) => new Date(b.date) - new Date(a.date))
+       const sorted = json?.sort((a, b) => new Date(a.date) - new Date(b.date)).reverse()
       setNotes(sorted)
 
     } catch (error) {
@@ -29,16 +30,21 @@ function App() {
     }
   }, [])
   return (
-    <div className="app">
-      {AuthToken ? <div className='home'>
-        <Header getData={getData}/>
-        <div className='notes'>
-          {notes?.map((note) => <Note key={note.id} note={note} getData={getData}/>)}
-          <Footer />
-        </div>
-      </div> : <Auth />}
-
-    </div>
+    <>
+      <div className="app">
+        {showLoader && <div className="loader-outer">
+          <div className="loader"></div>
+        </div>}
+        {AuthToken ?
+          <div className='home'>
+            <Header getData={getData} setShowLoader={setShowLoader} />
+            <div className='notes'>
+              {notes?.map((note) => <Note key={note.id} note={note} getData={getData} setShowLoader={setShowLoader} />)}
+              <Footer />
+            </div>
+          </div> : <Auth setShowLoader={setShowLoader} />}
+      </div>
+    </>
   );
 }
 
