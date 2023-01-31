@@ -6,7 +6,7 @@ const Modal = ({ mode, changeShowModal, note, getData }) => {
     const [data, setData] = useState({
         user_email: mode === 'Edit' ? note.user_email : cookies.Email,
         title: mode === 'Edit' ? note.title : '',
-        progress: mode === 'Edit' ? note.progress : '0',
+        progress: mode === 'Edit' ? note.progress : '2',
         date: new Date().toLocaleString(),
     })
 
@@ -65,9 +65,9 @@ const Modal = ({ mode, changeShowModal, note, getData }) => {
                     <button className='close' onClick={() => changeShowModal(false)}>X</button>
                 </div>
                 <form>
-                    <input type="text" placeholder='title' maxLength={300} onChange={handleChange} name='title' value={data.title} />
+                    <input type="text" placeholder='title' maxLength='300' onChange={handleChange} name='title' value={data.title} />
                     <label htmlFor="range">Drag to select your current progress:</label>
-                    <input id='range' type="range" min={'0'} max={'100'} onChange={handleChange} name='progress' value={data.progress} />
+                    <input id='range' type="range" min={'2'} max={'100'} onChange={handleChange} name='progress' value={data.progress} />
                     <input type="submit" value={mode} onClick={mode=== 'Create' ? postData : editData}/>
                 </form>
             </div>
