@@ -28,6 +28,7 @@ const Auth = () => {
         } else {
             setCookie('Email', data.email)
             setCookie('AuthToken', data.token)
+            window.location.reload()
         }
 
     }
