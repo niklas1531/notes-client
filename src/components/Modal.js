@@ -7,7 +7,7 @@ const Modal = ({ mode, changeShowModal, note, getData }) => {
         user_email: mode === 'Edit' ? note.user_email : cookies.Email,
         title: mode === 'Edit' ? note.title : '',
         progress: mode === 'Edit' ? note.progress : '',
-        date: mode === 'Edit' ? note.date : new Date(),
+        date: new Date().toLocaleString(),
     })
 
     const handleChange = (e) => {

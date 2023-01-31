@@ -26,7 +26,7 @@ const Note = ({ note, getData }) => {
                 <p className="date">{note.date}</p>
             </div>
             <Progress progress={note.progress} />
-            <div>
+            <div className="header">
                 <button className="edit" onClick={() => changeShowModal(true)}>EDIT</button>
                 <button className="delete" onClick={deleteNote}>DELETE</button>
             </div>

@@ -52,8 +52,17 @@ input {
 .delete:hover {
     background-color:  rgb(232, 114, 114);
 }
-.edit {}
-
+.edit {
+    background-color: rgb(138, 138, 138);
+    color: rgb(0, 0, 0, 0.8);
+    border: 1.5px solid rgb(50, 50, 50);
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+.edit:hover {
+    color: rgb(255,255,255);
+    background-color: rgb(50, 50, 50);
+}
 /* Auth */
 .auth {
     width: 500px;
@@ -195,6 +204,13 @@ input {
     color: rgb(0,0,0,.6);
     font-size: 15px;
     font-style: italic;
+}
+.note .title {
+    width: 220px;
+}
+.note .header {
+    display: flex;
+    gap: 10px;
 }
 /* Footer */
 footer {
