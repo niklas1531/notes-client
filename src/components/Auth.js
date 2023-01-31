@@ -40,37 +40,36 @@ const Auth = () => {
     return (
         <div className="auth">
             <form>
-                <h2>{isLogin ? 'Please Log in' : 'Please Sign up!'}</h2>
+                <h2>{isLogin ? 'Log in' : 'Sign up'}</h2>
                 <input
                     type="email"
-                    placeholder='email'
+                    placeholder='Email'
                     onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <input
                     type="password"
-                    placeholder="password"
+                    placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 {!isLogin &&
                     <input
                         type="password"
-                        placeholder="confirm password"
+                        placeholder="Confirm password"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />}
-                <input type="submit" value={isLogin ? 'Login': 'Signup'} className='submit' onClick={(e) => handleSubmit(e, isLogin ? 'login' : 'signup')} />
+                <input type="submit" value={isLogin ? 'Login' : 'Signup'} className='submit' onClick={(e) => handleSubmit(e, isLogin ? 'login' : 'signup')} />
                 {error && <p className="error">{error}</p>}
             </form>
-            <div className="button-group">
-                <button 
-                onClick={() => changeView(true)}
-                style={{backgroundColor: isLogin ? 'aliceblue': 'rgb(1, 76, 142)'}}
-                >Login</button>
-                <button 
-                onClick={() => changeView(false)}
-                style={{backgroundColor: !isLogin ? 'aliceblue': 'rgb(1, 76, 142)'}}
-                >Signup</button>
-            </div>
+            {!isLogin ?
+                    <button
+                        onClick={() => changeView(true)}
+                    >Already have an Account? Login</button>
+                    :
+                    <button
+                        onClick={() => changeView(false)}
+                    >Create Account</button>
+                }
         </div>
     );
 }
