@@ -25,9 +25,12 @@ const Note = ({ note, getData, setShowLoader }) => {
         <div className="note">
 
             <div>
-                <div className="flex">
+                {/* <div className="flex">
                     <div className="category" style={{ backgroundColor: `${note.category}` }}></div>
                     <h4 className="title">{note.title}</h4></div>
+                <p className="date">{note.date}</p> */}
+
+                <h4 className="title">{note.title}</h4>
                 <p className="date">{note.date}</p>
             </div>
 
