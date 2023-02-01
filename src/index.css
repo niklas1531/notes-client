@@ -17,28 +17,21 @@ input {
     background-color: rgb(1, 76, 142);
     color: rgb(255, 255, 255);
 }
-.submit:hover {
+
+.create {
+    border-color: rgb(1, 76, 142);
+    background-color: rgb(1, 76, 142);
+    border-radius: 3px;
+    border: 1px solid transparent;
+    padding: 5px 10px;
+}
+
+.submit:hover,
+.create:hover {
     background-color: rgb(6, 120, 220);
 }
-/* .create {
-    background-color: rgb(157, 224, 157);
-    color: rgb(0, 0, 0, 0.8);
-    border: 1.5px solid rgb(157, 224, 157);
-    padding: 5px 10px;
-    border-radius: 15px;
-}
-
-.create:hover {
-    background-color: rgb(211, 234, 211);
-} */
-
-.logout, .create {
-    /* background-color: rgb(1, 76, 142);
-    color: rgb(0, 0, 0, 0.8);
-    border: 1.5px solid rgb(1, 76, 142);
-    padding: 5px 10px;
-    border-radius: 15px;
-    color: rgb(255, 255, 255); */
+.logout,
+.refresh {
     background-color: rgba(9, 30, 66, 0.08);
     border-radius: 3px;
     border: 1px solid transparent;
@@ -48,9 +41,8 @@ input {
     line-height: 1.5;
     font-size: 1.1rem;
 }
-
 .logout:hover,
-.create:hover {
+.refresh:hover {
     background-color: rgba(9, 30, 66, 0.2);
 }
 
@@ -149,15 +141,20 @@ input {
     flex-direction: row;
     gap: 10px;
 }
+
 .header .btn-group button {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.header .btn-group img{
+
+.header .btn-group img {
     width: 20px;
     color: #344563;
-} 
+}
+.header .btn-group .create img {
+    filter: invert(1);
+}
 /* Modal */
 .overlay {
     position: absolute;
@@ -229,15 +226,17 @@ input {
         padding-bottom: 40px;
         text-align: center;
     }
-
+.header {
+    align-items: flex-start;
+}
     .header .heading {
         flex-direction: column;
         gap: unset;
     }
-
-    .header .btn-group {
-        flex-direction: column;
+    .header .heading h2 {
+        margin-top: 0;
     }
+
 
     .header .heading p {
         margin-top: 0;
@@ -247,21 +246,30 @@ input {
     .auth {
         width: 80% !important;
     }
+
     .flex {
         gap: 5px;
     }
-    
+
 }
+@media (max-width: 750px) {
+    .header .btn-group {
+      flex-direction: column;
+    }
+}
+
 .note .category {
     width: 20px;
     height: 20px;
     border-radius: 50%;
 }
+
 .flex {
     display: flex;
     align-items: center;
     gap: 20px;
 }
+
 .note .date {
     color: rgb(0, 0, 0, .6);
     font-size: 15px;
@@ -317,6 +325,7 @@ input {
     display: flex;
     width: 100%;
 }
+
 /* Footer */
 footer {
     width: 100%;
