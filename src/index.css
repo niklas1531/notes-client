@@ -20,7 +20,7 @@ input {
 .submit:hover {
     background-color: rgb(6, 120, 220);
 }
-.create {
+/* .create {
     background-color: rgb(157, 224, 157);
     color: rgb(0, 0, 0, 0.8);
     border: 1.5px solid rgb(157, 224, 157);
@@ -30,20 +30,28 @@ input {
 
 .create:hover {
     background-color: rgb(211, 234, 211);
-}
+} */
 
-.logout {
-    background-color: rgb(1, 76, 142);
+.logout, .create {
+    /* background-color: rgb(1, 76, 142);
     color: rgb(0, 0, 0, 0.8);
     border: 1.5px solid rgb(1, 76, 142);
     padding: 5px 10px;
     border-radius: 15px;
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255); */
+    background-color: rgba(9, 30, 66, 0.08);
+    border-radius: 3px;
+    border: 1px solid transparent;
+    padding: 5px 10px;
+    color: #344563;
+    font-weight: bold;
+    line-height: 1.5;
+    font-size: 1.1rem;
 }
 
-.logout:hover {
-    background-color: rgb(180, 216, 248);
-    color: rgb(0, 0, 0);
+.logout:hover,
+.create:hover {
+    background-color: rgba(9, 30, 66, 0.2);
 }
 
 .delete {
@@ -141,7 +149,15 @@ input {
     flex-direction: row;
     gap: 10px;
 }
-
+.header .btn-group button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header .btn-group img{
+    width: 20px;
+    color: #344563;
+} 
 /* Modal */
 .overlay {
     position: absolute;

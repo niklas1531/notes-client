@@ -74,10 +74,10 @@ const Modal = ({ mode, changeShowModal, note, getData, setShowLoader }) => {
                     <input type="text" placeholder='title' maxLength='300' onChange={handleChange} name='title' value={data.title} required />
                     <label htmlFor="range">Drag to select your current progress:</label>
                     <input id='range' type="range" min={'2'} max={'100'} onChange={handleChange} name='progress' value={data.progress} />
-                    <div className="flex">
+                    {/* <div className="flex">
                         <label htmlFor="category">Choose a Category</label>
                         <input type="color" name="category" id="category" onChange={handleChange} value={data.category} />
-                    </div>
+                    </div> */}
                     <input type="submit" className='submit' value={mode} />
                 </form>
             </div>
