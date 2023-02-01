@@ -8,7 +8,8 @@ const Modal = ({ mode, changeShowModal, note, getData, setShowLoader }) => {
         title: mode === 'Edit' ? note.title : '',
         progress: mode === 'Edit' ? note.progress : '2',
         date: new Date().toLocaleString(),
-        category: mode === 'Edit' ? note.category : 'red'
+        category: mode === 'Edit' ? note.category : 'red',
+        content: mode === 'Edit' ? note.content : ''
     })
 
     const handleChange = (e) => {
@@ -71,7 +72,8 @@ const Modal = ({ mode, changeShowModal, note, getData, setShowLoader }) => {
                     <button className='close' onClick={() => changeShowModal(false)}>X</button>
                 </div>
                 <form onSubmit={mode === 'Create' ? postData : editData}>
-                    <input type="text" placeholder='title' maxLength='300' onChange={handleChange} name='title' value={data.title} required />
+                    <input type="text" placeholder='Title' maxLength='50' onChange={handleChange} name='title' value={data.title} required />
+                    <textarea name="content" id="content" cols="30" rows="5" onChange={handleChange} value={data.content} placeholder='Add some notes'/>
                     <label htmlFor="range">Drag to select your current progress:</label>
                     <input id='range' type="range" min={'2'} max={'100'} onChange={handleChange} name='progress' value={data.progress} />
                     {/* <div className="flex">

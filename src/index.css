@@ -5,7 +5,7 @@ body {
     font-family: 'Trebuchet MS', Arial, sans-serif;
 }
 
-input {
+input, textarea {
     border: 1.5px solid rgb(0, 0, 0);
     border-radius: 10px;
     padding: 10px;
@@ -178,7 +178,8 @@ input {
     background-color: rgb(255, 255, 255);
     width: 500px;
     padding: 20px;
-    height: 300px;
+   
+    min-height: fit-content !important;
 }
 
 .modal-header {
@@ -193,7 +194,9 @@ input {
     padding: 20px;
     gap: 20px;
 }
-
+.modal form input {
+    
+}
 /* Progress */
 .outer-progress {
     width: 200px;
