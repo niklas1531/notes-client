@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Auth from './components/Auth'
 import Note from './components/Note'
 import Footer from './components/Footer'
+import Admin from './components/Admin'
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(null)
@@ -38,16 +39,18 @@ function App() {
         </div>}
         {AuthToken ?
           <div className='home'>
-            <Header getData={getData} setShowLoader={setShowLoader} />
-            <h3>TODOs</h3>
-            <div className='notes'>
-              {notes?.filter((n) => n.type === 'todo').map((note) => <Note key={note.id} note={note} getData={getData} setShowLoader={setShowLoader} />)}
-            </div>
-            <h3>Notes</h3>
-            <div className='notes'>
-              {notes?.filter((n) => n.type === 'note').map((note) => <Note key={note.id} note={note} getData={getData} setShowLoader={setShowLoader} />)}
-            </div>
-            <Footer />
+            {Email === 'admin@gmail.com' ? <Admin /> : <>
+              <Header getData={getData} setShowLoader={setShowLoader} />
+              <h3>TODOs</h3>
+              <div className='notes'>
+                {notes?.filter((n) => n.type === 'todo').map((note) => <Note key={note.id} note={note} getData={getData} setShowLoader={setShowLoader} />)}
+              </div>
+              <h3>Notes</h3>
+              <div className='notes'>
+                {notes?.filter((n) => n.type === 'note').map((note) => <Note key={note.id} note={note} getData={getData} setShowLoader={setShowLoader} />)}
+              </div>
+              <Footer />
+            </>}
           </div> : <Auth setShowLoader={setShowLoader} />}
       </div>
     </>
