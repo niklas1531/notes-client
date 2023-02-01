@@ -9,7 +9,8 @@ const Modal = ({ mode, changeShowModal, note, getData, setShowLoader }) => {
         progress: mode === 'Edit' ? note.progress : '2',
         date: new Date().toLocaleString(),
         category: mode === 'Edit' ? note.category : 'red',
-        content: mode === 'Edit' ? note.content : ''
+        content: mode === 'Edit' ? note.content : '',
+        type: mode === 'Edit' ? note.type : 'todo'
     })
 
     const handleChange = (e) => {
@@ -73,14 +74,19 @@ const Modal = ({ mode, changeShowModal, note, getData, setShowLoader }) => {
                 </div>
                 <form onSubmit={mode === 'Create' ? postData : editData}>
                     <input type="text" placeholder='Title' maxLength='50' onChange={handleChange} name='title' value={data.title} required />
-                    <textarea name="content" id="content" cols="30" rows="5" onChange={handleChange} value={data.content} placeholder='Add some notes'/>
-                    <label htmlFor="range">Drag to select your current progress:</label>
-                    <input id='range' type="range" min={'2'} max={'100'} onChange={handleChange} name='progress' value={data.progress} />
-                    {/* <div className="flex">
-                        <label htmlFor="category">Choose a Category</label>
-                        <input type="color" name="category" id="category" onChange={handleChange} value={data.category} />
-                    </div> */}
+                    <textarea name="content" id="content" cols="30" rows="5" onChange={handleChange} value={data.content} placeholder='Add some notes' />
+                   <div>
+                   <label htmlFor="todo">Todo</label>
+                   <input type="radio" name='type' value='todo' id="todo" onClick={handleChange} checked={data.type === 'todo' ? true : false}/>
+                   <label htmlFor="note">Note</label>
+                    <input type="radio" name='type' value='note' id="note" onClick={handleChange}checked={data.type === 'note' ? true : false}/>
+                   </div>
+                    {data.type === 'todo' && <>
+                        <label htmlFor="range">Drag to select your current progress:</label>
+                        <input id='range' type="range" min={'2'} max={'100'} onChange={handleChange} name='progress' value={data.progress} />
+                   </>}
                     <input type="submit" className='submit' value={mode} />
+
                 </form>
             </div>
         </div>

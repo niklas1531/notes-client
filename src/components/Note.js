@@ -22,7 +22,8 @@ const Note = ({ note, getData, setShowLoader }) => {
 
     }
     return (
-        <div className="note">
+         <div className="note">  
+         {/* onClick={() => changeShowModal(true)}  */}
 
             <div>
                 {/* <div className="flex">
@@ -34,7 +35,7 @@ const Note = ({ note, getData, setShowLoader }) => {
                 <p className="date">{note.date}</p>
             </div>
 
-            <Progress progress={note.progress} />
+            {note.type === 'todo' && <Progress progress={note.progress} />}
             <div className="header">
                 <button className="edit" onClick={() => changeShowModal(true)}>EDIT</button>
                 <button className="delete" onClick={deleteNote}>DELETE</button>
